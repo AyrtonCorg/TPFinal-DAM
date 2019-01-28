@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/agregarSaldo" android:title="@string/agregar_saldo"></item>
+    <item android:id="@+id/realizarTransferencia" android:title="@string/realizar_transferencia"></item>
+    <item android:id="@+id/turnos" android:title="@string/turnos"></item>
+    <item android:id="@+id/ultimosMovimientos" android:title="Ultimos_movimientos"></item>
+    <item android:id="@+id/administradorDeServicios" android:title="@string/administrador_de_servicios" />
+</menu>
