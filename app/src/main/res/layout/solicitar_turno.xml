@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SolicitarTurno">
+
+    <TextView
+        android:id="@+id/textViewSolicitarTurno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Solicitar turno"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/sucursal_coord"
+            android:layout_width="186dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnBuscarSucursal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Buscar sucursal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewFechaTurno"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:text="@string/fecha" />
+
+        <EditText
+            android:id="@+id/fechaTurno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewHoraTurno"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:text="Horario" />
+
+        <EditText
+            android:id="@+id/horarioTurno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date|time" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewTipoTramite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tipo de trámite" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="144dp" >
+
+        <RadioButton
+            android:id="@+id/radioButtonCaja"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Caja" />
+
+        <RadioButton
+            android:id="@+id/radioButtonAtencionPersonalizada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Atención personalizada" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonSolicitarTurno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Solicitar turno" />
+
+</LinearLayout>

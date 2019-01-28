@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CrearCuenta">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/textViewUsuario2"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:text="@string/usuario" />
+
+    <EditText
+        android:id="@+id/usuario_crearCuenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/textViewPassword2"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:text="@string/password" />
+
+    <EditText
+        android:id="@+id/password_crearCuenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/textViewReingreseContrasenia"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:text="@string/reingrese_contrase_a" />
+
+    <EditText
+        android:id="@+id/reingresePassword_crearCuenta2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:text="@string/email" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/textViewNumeroTarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:text="@string/n_mero_de_tarjeta" />
+
+    <EditText
+        android:id="@+id/numeroTarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textViewDomicilio"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:text="@string/domicilio" />
+
+    <EditText
+        android:id="@+id/domicilio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPostalAddress" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="63dp" />
+
+    <Button
+        android:id="@+id/crear_cuenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/crear_cuenta" />
+
+</LinearLayout>

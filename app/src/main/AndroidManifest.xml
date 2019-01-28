@@ -13,7 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuDeCuenta"></activity>
+        <activity android:name=".AdministradorDeServicios"></activity>
+        <activity android:name=".UltimosMovimientos" />
+        <activity android:name=".SolicitarTurno" />
+        <activity android:name=".RealizarTransferencia" />
+        <activity android:name=".CrearCuenta" />
+        <activity android:name=".MenuDeCuenta" />
         <activity android:name=".IniciarSesion" />
         <activity android:name=".MainActivity">
             <intent-filter>

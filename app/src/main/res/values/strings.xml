@@ -28,4 +28,18 @@
     <string name="administrador_de_servicios">Administrador de servicios</string>
     <string name="saldo">Saldo</string>
     <string name="simboloPesos">$</string>
+    <string name="realizar_transferencia">Realizar transferencia</string>
+    <string name="cuenta_origen">Cuenta origen</string>
+    <string name="realizar_transferencia">Realizar transferencia</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="observaciones">Observaciones</string>
+    <string name="fecha">Fecha</string>
+    <string name="monto">Monto</string>
+    <string name="cuenta_destino">Cuenta destino</string>
+    <string name="usuario">Usuario</string>
+    <string name="reingrese_contrase_a">Reingrese contraseña</string>
+    <string name="crear_cuenta">Crear cuenta</string>
+    <string name="domicilio">Domicilio</string>
+    <string name="n_mero_de_tarjeta">Número de tarjeta</string>
+    <string name="email">Email</string>
 </resources>
