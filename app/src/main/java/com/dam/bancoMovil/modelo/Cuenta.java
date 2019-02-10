@@ -27,13 +27,21 @@ public class Cuenta {
     @Ignore
     List<Transferencia> transferencias;
 
-
-    public Cuenta(Long numeroCuenta, Float saldo, Usuario usuario, TipoMoneda moneda) {
+    @Ignore
+    public Cuenta(Long numeroCuenta, Float saldo, Usuario usuario, TipoMoneda tipoMoneda) {
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
         this.usuario = usuario;
         this.transferencias = new ArrayList<Transferencia>();
-        this.tipoMoneda = moneda;
+        this.tipoMoneda = tipoMoneda;
+    }
+
+    public Cuenta(Long numeroCuenta, Float saldo, TipoMoneda tipoMoneda) {
+        this.numeroCuenta = numeroCuenta;
+        this.saldo = saldo;
+        //this.usuario = usuario;
+        this.transferencias = new ArrayList<Transferencia>();
+        this.tipoMoneda = tipoMoneda;
     }
 
     public Long getNumeroCuenta() {
@@ -66,5 +74,13 @@ public class Cuenta {
 
     public void setTransferencias(List<Transferencia> transferencias) {
         this.transferencias = transferencias;
+    }
+
+    public TipoMoneda getTipoMoneda() {
+        return tipoMoneda;
+    }
+
+    public void setTipoMoneda(TipoMoneda tipoMoneda) {
+        this.tipoMoneda = tipoMoneda;
     }
 }

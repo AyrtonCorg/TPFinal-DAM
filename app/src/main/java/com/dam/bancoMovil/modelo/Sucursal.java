@@ -31,4 +31,44 @@ public class Sucursal {
         this.longitud = longitud;
         this.turnos = new ArrayList<Turno>();
     }
+
+    public int getId_sucursal() {
+        return id_sucursal;
+    }
+
+    public void setId_sucursal(int id_sucursal) {
+        this.id_sucursal = id_sucursal;
+    }
+
+    public String getNombreSucursal() {
+        return nombreSucursal;
+    }
+
+    public void setNombreSucursal(String nombreSucursal) {
+        this.nombreSucursal = nombreSucursal;
+    }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public List<Turno> getTurnos() {
+        return turnos;
+    }
+
+    public void setTurnos(List<Turno> turnos) {
+        this.turnos = turnos;
+    }
 }

@@ -5,14 +5,16 @@ import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Usuario {
-    @PrimaryKey
     @ColumnInfo(name="username")
+    @PrimaryKey
+    @NonNull
     private String username;
     @ColumnInfo(name= "password")
     private String password;
@@ -24,8 +26,8 @@ public class Usuario {
     private Cuenta cuenta;
     @Ignore
     private List<Turno> turnos;
-    @ColumnInfo(name = "tienePlazoFijo")
-    private boolean tienePlazoFijo;
+    @Ignore
+    private List<PlazoFijo> plazosFijos;
 
     public Usuario(String username, String password, String email, String domicilio, Cuenta cuenta) {
         this.username = username;
@@ -34,7 +36,7 @@ public class Usuario {
         this.domicilio = domicilio;
         this.cuenta = cuenta;
         this.turnos = new ArrayList<Turno>();
-        this.tienePlazoFijo = false;
+        this.plazosFijos = new ArrayList<PlazoFijo>();
     }
 
     public String getUsername() {

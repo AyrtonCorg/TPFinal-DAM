@@ -34,4 +34,44 @@ public class Turno {
         this.tipoTramite = tipoTramite;
         this.fechayHora = fechayHora;
     }
+
+    public Long getId_turno() {
+        return id_turno;
+    }
+
+    public void setId_turno(Long id_turno) {
+        this.id_turno = id_turno;
+    }
+
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public TipoTramite getTipoTramite() {
+        return tipoTramite;
+    }
+
+    public void setTipoTramite(TipoTramite tipoTramite) {
+        this.tipoTramite = tipoTramite;
+    }
+
+    public Date getFechayHora() {
+        return fechayHora;
+    }
+
+    public void setFechayHora(Date fechayHora) {
+        this.fechayHora = fechayHora;
+    }
 }

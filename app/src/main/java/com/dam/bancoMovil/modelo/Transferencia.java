@@ -28,4 +28,44 @@ public class Transferencia {
         this.cuentaDestino = cuentaDestino;
         this.tipoTransferencia = tipoTransferencia;
     }
+
+    public long getId_transferencia() {
+        return id_transferencia;
+    }
+
+    public void setId_transferencia(long id_transferencia) {
+        this.id_transferencia = id_transferencia;
+    }
+
+    public float getMonto() {
+        return monto;
+    }
+
+    public void setMonto(float monto) {
+        this.monto = monto;
+    }
+
+    public Cuenta getCuentaOrigen() {
+        return cuentaOrigen;
+    }
+
+    public void setCuentaOrigen(Cuenta cuentaOrigen) {
+        this.cuentaOrigen = cuentaOrigen;
+    }
+
+    public Cuenta getCuentaDestino() {
+        return cuentaDestino;
+    }
+
+    public void setCuentaDestino(Cuenta cuentaDestino) {
+        this.cuentaDestino = cuentaDestino;
+    }
+
+    public TipoTransferencia getTipoTransferencia() {
+        return tipoTransferencia;
+    }
+
+    public void setTipoTransferencia(TipoTransferencia tipoTransferencia) {
+        this.tipoTransferencia = tipoTransferencia;
+    }
 }
