@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Creación del canal de notificaciones
     private void createNotificationChannel() {
-        // Crear el canal de notificaciones pero solo para API 26 io superior
+        // Crear el canal de notificaciones pero solo para API 26 o superior
         // dado que NotificationChannel es una clase nueva que no está incluida
         // en las librerías de soporte que brindan compatibilidad hacía atrás
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

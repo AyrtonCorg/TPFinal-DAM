@@ -50,7 +50,7 @@
                 android:text="@string/reingrese_contrase_a" />
 
             <EditText
-                android:id="@+id/reingresePassword_crearCuenta2"
+                android:id="@+id/reingresePassword_crearCuenta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

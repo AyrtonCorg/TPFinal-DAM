@@ -39,7 +39,6 @@ public class Cuenta {
     public Cuenta(Long numeroCuenta, Float saldo, TipoMoneda tipoMoneda) {
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
-        //this.usuario = usuario;
         this.transferencias = new ArrayList<Transferencia>();
         this.tipoMoneda = tipoMoneda;
     }
