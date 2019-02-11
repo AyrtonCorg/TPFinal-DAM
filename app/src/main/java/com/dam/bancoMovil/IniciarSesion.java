@@ -74,6 +74,7 @@ public class IniciarSesion extends AppCompatActivity {
                     //Verifico existencia
                     if (validoDatos(user,pass)){
                         Intent i = new Intent(v.getContext() , MenuDeCuenta.class);
+                        i.putExtra("username",user);
                         startActivity(i);
                     }else{
                         //Muestro mensaje de error
@@ -95,7 +96,7 @@ public class IniciarSesion extends AppCompatActivity {
             public void run() {
                 UsuarioDAO usuarioDAO = MyDatabase.getInstance(getApplicationContext()).getUsuarioDAO();
                 //Si existe el usuario
-                if(existeUser){
+                if(existeUsuario(nombreUser)){
                     //Compruebo contraseña
                     Usuario usuario = usuarioDAO.getUser(nombreUser);
                     if (usuario.getPassword().equals(pass)){

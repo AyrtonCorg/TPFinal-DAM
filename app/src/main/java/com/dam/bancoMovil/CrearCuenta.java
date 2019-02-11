@@ -1,5 +1,6 @@
 package com.dam.bancoMovil;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -87,6 +88,8 @@ public class CrearCuenta extends AppCompatActivity {
                         }
 
                         Toast.makeText(getApplicationContext(), "Cuenta creada con éxito", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(v.getContext() , MainActivity.class);
+                        startActivity(i);
 
                         break;
                     case 1:
