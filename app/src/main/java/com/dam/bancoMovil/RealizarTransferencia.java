@@ -44,7 +44,8 @@ public class RealizarTransferencia extends AppCompatActivity {
     private UsuarioDAO usuarioDAO;
     private CuentaDAO cuentaDAO;
     private TransferenciaDAO transferenciaDAO;
-    Boolean agregaSaldo = false;
+    private String hoy;
+    private Boolean agregaSaldo = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +87,7 @@ public class RealizarTransferencia extends AppCompatActivity {
             //Seteo la fecha actual-----------
             Date hoyCalendar = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
-            String hoy = dateFormat.format(hoyCalendar);
+            hoy = dateFormat.format(hoyCalendar);
 
             this.fecha.setText(hoy);
             //-------------------------------
@@ -119,18 +120,21 @@ public class RealizarTransferencia extends AppCompatActivity {
             Boolean noAlcanza = false;
 
             final Cuenta cuentaO = usuarioO.getCuenta();
-            final Cuenta cuentaD;
 
             if (agregaSaldo){
                 usuarioD = usuarioO;
             }else{
                 Long cuentaDest = Long.parseLong(cuentaDestino.getText().toString());
-                //cuentaD = buscarCuenta(cuentaDest);
                 usuarioD = buscarUsuarioDestino(cuentaDest);
             }
 
             final Float monto = Float.parseFloat(montoATransferir.getText().toString());
-            final TipoTransferencia tipo = TipoTransferencia.TRANSFERENCIA_REALIZADAS;
+            final TipoTransferencia tipo;
+            if(agregaSaldo){
+                tipo = TipoTransferencia.DEPOSITO_AGREGAR_SALDO;
+            }else{
+                tipo = TipoTransferencia.TRANSFERENCIA_REALIZADAS;
+            }
             final String obser = observaciones.getText().toString();
 
             //Si no agrego saldo
@@ -157,7 +161,7 @@ public class RealizarTransferencia extends AppCompatActivity {
                     @Override
                     public void run() {
                         //Creo y guardo la transferencia
-                        Transferencia transfer = new Transferencia(monto,cuentaO,usuarioD.getCuenta(),tipo,obser);
+                        Transferencia transfer = new Transferencia(monto,cuentaO,usuarioD.getCuenta(),tipo,obser,hoy);
                         transfer.setId_transferencia(transferenciaDAO.insertOne(transfer));
                         /*Si agrego saldo a mi cuenta lo guardo una sola vez*/
                         //Agrego la transferencia a la cuenta -- No tengo que persistir datos asi que queda acá no más
@@ -169,8 +173,6 @@ public class RealizarTransferencia extends AppCompatActivity {
                             //Descuento el saldo de la cuenta origen
                             cuentaO.setSaldo(cuentaO.getSaldo()-monto);
                             usuarioO.setCuenta(cuentaO);
-                            /*No hace falta esto porque ignoro la lista para guardar en la bd*/
-                            //cuentaD.getTransferencias().add(transfer);
                         }else{
                             //Sino actualizo mi cuenta
                             usuarioO.setCuenta(usuarioD.getCuenta());
@@ -178,8 +180,6 @@ public class RealizarTransferencia extends AppCompatActivity {
                         //Guardo los cambios
                         usuarioDAO.update(usuarioO);
                         usuarioDAO.update(usuarioD);
-                        //cuentaDAO.update(usuarioD.getCuenta());
-                        //cuentaDAO.update(cuentaO);
 
                         Message completeMessage = handler.obtainMessage(EVENTO_NUEVA_TRANSFERENCIA);
                         completeMessage.sendToTarget();
@@ -188,7 +188,10 @@ public class RealizarTransferencia extends AppCompatActivity {
                 Thread hiloGuardarTransferencia = new Thread(r);
                 hiloGuardarTransferencia.start();
 
-                cuentaDestino.setText("");
+                if(!agregaSaldo){
+                    cuentaDestino.setText("");
+                    cuentaDestino.setEnabled(true);
+                }
                 montoATransferir.setText("");
                 observaciones.setText("");
             }
@@ -201,32 +204,10 @@ public class RealizarTransferencia extends AppCompatActivity {
             switch (inputMessage.what){
                 case EVENTO_NUEVA_TRANSFERENCIA:
                     Toast.makeText(getApplicationContext(), "Transferencia realizada con éxito", Toast.LENGTH_SHORT).show();
-
                     break;
             }
         }
     };
-
-    /*private Cuenta buscarCuenta(final Long nroCuenta){
-        cuentaDAO = MyDatabase.getInstance(getApplicationContext()).getCuentaDAO();
-
-        Runnable r = new Runnable() {
-            @Override
-            public void run() {
-                cuentaBuscada = cuentaDAO.getCuenta(nroCuenta);
-            }
-        };
-        Thread hiloBuscarCuenta = new Thread(r);
-        hiloBuscarCuenta.start();
-
-        try {
-            hiloBuscarCuenta.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return cuentaBuscada;
-    }*/
 
     private Usuario buscarUsuarioDestino (final Long nroCuenta){
         usuarioDAO = MyDatabase.getInstance(getApplicationContext()).getUsuarioDAO();
@@ -280,6 +261,10 @@ public class RealizarTransferencia extends AppCompatActivity {
                     Intent h = new Intent(getApplicationContext() , AdministradorDeServicios.class);
                     h.putExtra("username", usuarioO.getUsername());
                     startActivity(h);
+                    break;
+                case R.id.cerrarSesion:
+                    Intent r = new Intent(getApplicationContext() , MainActivity.class);
+                    startActivity(r);
                     break;
             }
             return true;

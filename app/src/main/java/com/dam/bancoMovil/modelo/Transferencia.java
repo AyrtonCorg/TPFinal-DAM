@@ -8,6 +8,8 @@ import android.arch.persistence.room.TypeConverters;
 
 import com.dam.bancoMovil.dao.TipoTransferenciaConverter;
 
+import java.util.Date;
+
 @Entity
 public class Transferencia {
     @PrimaryKey(autoGenerate = true)
@@ -23,15 +25,26 @@ public class Transferencia {
     private TipoTransferencia tipoTransferencia;
     @ColumnInfo(name = "observaciones")
     private String observaciones;
+    @ColumnInfo(name = "fecha")
+    private String fecha;
 
 
 
-    public Transferencia(float monto, Cuenta cuentaOrigen, Cuenta cuentaDestino, TipoTransferencia tipoTransferencia, String observaciones) {
+    public Transferencia(float monto, Cuenta cuentaOrigen, Cuenta cuentaDestino, TipoTransferencia tipoTransferencia, String observaciones, String fecha) {
         this.monto = monto;
         this.cuentaOrigen = cuentaOrigen;
         this.cuentaDestino = cuentaDestino;
         this.tipoTransferencia = tipoTransferencia;
         this.observaciones = observaciones;
+        this.fecha = fecha;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     public long getId_transferencia() {

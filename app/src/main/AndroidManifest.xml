@@ -13,6 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CustomAdapters.AdaptadorFilaUltimosMovimientosDeCuenta"></activity>
+        <activity android:name=".CustomAdapters.AdaptadorFilaActividadUltimosMovimientos" />
 
         <receiver
             android:name=".ContraseniaReceiver"

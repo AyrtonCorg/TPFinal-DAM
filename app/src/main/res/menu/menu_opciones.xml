@@ -7,4 +7,5 @@
     <item android:id="@+id/turnos" android:title="@string/turnos"></item>
     <item android:id="@+id/ultimosMovimientos" android:title="Ultimos_movimientos"></item>
     <item android:id="@+id/administradorDeServicios" android:title="@string/administrador_de_servicios" />
+    <item android:id="@+id/cerrarSesion" android:title="Cerrar sesión" />
 </menu>

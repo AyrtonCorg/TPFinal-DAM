@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dam.bancoMovil.CustomAdapters.AdaptadorFilaUltimosMovimientosDeCuenta;
 import com.dam.bancoMovil.dao.MyDatabase;
 import com.dam.bancoMovil.dao.UsuarioDAO;
 import com.dam.bancoMovil.modelo.Transferencia;
@@ -29,7 +30,7 @@ public class MenuDeCuenta extends AppCompatActivity {
     private NavigationView navView;
 
     private List<Transferencia> transferencias = new ArrayList<>();
-    private ArrayAdapter<Transferencia> adapter_trans;
+    private AdaptadorFilaUltimosMovimientosDeCuenta adapter_trans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,15 +80,12 @@ public class MenuDeCuenta extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        System.out.println("Saldo: "+usuario.getCuenta().getSaldo());
-        for(Transferencia t : transferencias){
-            System.out.println(t.getCuentaOrigen());
-            System.out.println(t.getCuentaDestino());
-            System.out.println(t.getMonto());
-        }
-
         if (transferencias != null && transferencias.size() > 0 && !transferencias.isEmpty()) {
-            adapter_trans = new ArrayAdapter<Transferencia>(getApplicationContext(), android.R.layout.simple_list_item_single_choice, transferencias);
+            ArrayList<Transferencia> transferenciasOrdenada = new ArrayList<Transferencia>();
+            for(int i = transferencias.size(); i>0; i--){
+                transferenciasOrdenada.add(transferencias.get(i-1));
+            }
+            adapter_trans = new AdaptadorFilaUltimosMovimientosDeCuenta(getApplicationContext(), transferenciasOrdenada);
             adapter_trans.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             ultimosMovimientos.setAdapter(adapter_trans);
         } else {
@@ -125,6 +123,10 @@ public class MenuDeCuenta extends AppCompatActivity {
                                 Intent h = new Intent(getApplicationContext() , AdministradorDeServicios.class);
                                 h.putExtra("username",usuario.getUsername());
                                 startActivity(h);
+                                break;
+                            case R.id.cerrarSesion:
+                                Intent r = new Intent(getApplicationContext() , MainActivity.class);
+                                startActivity(r);
                                 break;
                         }
                         return true;
