@@ -9,14 +9,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.dam.bancoMovil.dao.MyDatabase;
+
 public class MainActivity extends AppCompatActivity {
     private Button btnIniciarSesion;
     private Button btnCrearCuenta;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        //MyDatabase.getInstance(getApplicationContext()).borrarTodo();
 
         //Creo el canal de notificaciones
         createNotificationChannel();

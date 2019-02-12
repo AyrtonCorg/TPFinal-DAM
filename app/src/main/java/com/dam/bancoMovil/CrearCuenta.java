@@ -127,7 +127,7 @@ public class CrearCuenta extends AppCompatActivity {
                 //Si no coinciden las contraseñas
                 return 2;
             } else {
-                if (nroTarj.toString().length() != 12) {
+                if (nroTarj.toString().length() != 16) {
                     //Número de tarjeta inválido
                     return 3;
                 } else {

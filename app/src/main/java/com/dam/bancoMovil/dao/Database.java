@@ -10,7 +10,7 @@ import com.dam.bancoMovil.modelo.Turno;
 import com.dam.bancoMovil.modelo.Usuario;
 
 @android.arch.persistence.room.Database(entities = {Usuario.class, Cuenta.class, Sucursal.class, Turno.class,
-                                                    Transferencia.class, PlazoFijo.class},version = 1,exportSchema = false)
+                                                    Transferencia.class, PlazoFijo.class},version = 2,exportSchema = false)
 public abstract class Database extends RoomDatabase {
     public abstract UsuarioDAO usuarioDAO();
     public abstract CuentaDAO cuentaDAO();

@@ -18,6 +18,9 @@ public interface UsuarioDAO {
     @Query("SELECT * FROM Usuario WHERE Usuario.username = :user")
     Usuario getUser(String user);
 
+    @Query("SELECT * FROM Usuario WHERE Usuario.cuenta_nroCuenta = :nroCuenta")
+    Usuario getUsuarioDeCuenta(Long nroCuenta);
+
     @Insert
     void insertAll(List<Usuario> usuario);
 

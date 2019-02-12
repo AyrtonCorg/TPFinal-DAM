@@ -19,7 +19,7 @@ public interface TransferenciaDAO {
     void insertAll(List<Transferencia> transferencia);
 
     @Insert
-    void insertOne(Transferencia transferencia);
+    Long insertOne(Transferencia transferencia);
 
     @Update
     void update(Transferencia transferencia);

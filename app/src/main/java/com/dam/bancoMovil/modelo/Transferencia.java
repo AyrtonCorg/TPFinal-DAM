@@ -21,12 +21,17 @@ public class Transferencia {
     private Cuenta cuentaDestino;
     @TypeConverters(TipoTransferenciaConverter.class)
     private TipoTransferencia tipoTransferencia;
+    @ColumnInfo(name = "observaciones")
+    private String observaciones;
 
-    public Transferencia(float monto, Cuenta cuentaOrigen, Cuenta cuentaDestino, TipoTransferencia tipoTransferencia) {
+
+
+    public Transferencia(float monto, Cuenta cuentaOrigen, Cuenta cuentaDestino, TipoTransferencia tipoTransferencia, String observaciones) {
         this.monto = monto;
         this.cuentaOrigen = cuentaOrigen;
         this.cuentaDestino = cuentaDestino;
         this.tipoTransferencia = tipoTransferencia;
+        this.observaciones = observaciones;
     }
 
     public long getId_transferencia() {
@@ -67,5 +72,13 @@ public class Transferencia {
 
     public void setTipoTransferencia(TipoTransferencia tipoTransferencia) {
         this.tipoTransferencia = tipoTransferencia;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 }
