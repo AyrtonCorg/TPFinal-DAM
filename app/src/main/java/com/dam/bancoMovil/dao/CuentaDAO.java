@@ -19,7 +19,8 @@ public interface CuentaDAO {
     @Query("SELECT * FROM Cuenta WHERE Cuenta.nroCuenta = :nroCuenta")
     Cuenta getCuenta(Long nroCuenta);
 
-    @Query("SELECT * FROM Transferencia WHERE Transferencia.cuentaOrigen_nroCuenta = :nroCuenta")
+    @Query("SELECT * FROM Transferencia WHERE Transferencia.cuentaOrigen_nroCuenta = :nroCuenta " +
+                                            "OR Transferencia.cuentaDestino_nroCuenta = :nroCuenta")
     List<Transferencia> getTransferenciasDeCuenta(Long nroCuenta);
 
     @Insert
