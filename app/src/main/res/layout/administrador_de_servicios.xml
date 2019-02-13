@@ -20,26 +20,51 @@
         <TextView
             android:id="@+id/textViewServicios"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="8dp"
-            android:text="Servicios"
+            android:text="Administrador de servicios"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-        <Spinner
-            android:id="@+id/spinner"
+        <ToggleButton
+            android:id="@+id/buttonSolicitarOVerServicios"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown" />
+            android:checked="false"
+            android:text="ToggleButton"
+            android:textOff="Solicitar servicio"
+            android:textOn="Servicios suscriptos" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="62dp" />
+
+        <Button
+            android:id="@+id/btn_plazoFijo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Plazo Fijo" />
+
+        <Button
+            android:id="@+id/btn_Seguros"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seguro" />
+
+        <Button
+            android:id="@+id/btn_Credito"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Credito" />
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="464dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -51,13 +76,6 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewuUltimosMovientos"
             app:layout_constraintVertical_bias="0.0" />
 
-        <ToggleButton
-            android:id="@+id/buttonDarBajaOPedirServicio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ToggleButton"
-            android:textOff="Dar de baja"
-            android:textOn="Pedir servicio" />
     </LinearLayout>
 
     <!-- Layout del menú lateral (Navigation View) -->

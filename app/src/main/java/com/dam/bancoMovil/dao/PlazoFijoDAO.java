@@ -15,11 +15,14 @@ public interface PlazoFijoDAO {
     @Query("SELECT * FROM PlazoFijo")
     List<PlazoFijo> getAll();
 
+    @Query("SELECT * FROM PlazoFijo WHERE PlazoFijo.use_username = :username")
+    List<PlazoFijo> getPlazosDeUsuario(String username);
+
     @Insert
     void insertAll(List<PlazoFijo> plazoFijo);
 
     @Insert
-    void insertOne(PlazoFijo plazoFijo);
+    long insertOne(PlazoFijo plazoFijo);
 
     @Update
     void update(PlazoFijo plazoFijo);

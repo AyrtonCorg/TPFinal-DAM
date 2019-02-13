@@ -13,11 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CustomAdapters.AdaptadorFilaUltimosMovimientosDeCuenta"></activity>
+        <activity android:name=".CustomAdapters.AdaptadorFilaAdministradorDeServicios"></activity>
+        <activity android:name=".SolicitarPlazoFijo" />
+        <activity android:name=".CustomAdapters.AdaptadorFilaTipoServicio" />
+        <activity android:name=".CustomAdapters.AdaptadorFilaUltimosMovimientosDeCuenta" />
         <activity android:name=".CustomAdapters.AdaptadorFilaActividadUltimosMovimientos" />
 
         <receiver
-            android:name=".ContraseniaReceiver"
+            android:name=".MyReceiver"
             android:enabled="true"
             android:exported="true" />
 

@@ -12,7 +12,7 @@ import com.dam.bancoMovil.dao.MyDatabase;
 import com.dam.bancoMovil.dao.UsuarioDAO;
 import com.dam.bancoMovil.modelo.Usuario;
 
-public class ContraseniaReceiver extends BroadcastReceiver {
+public class MyReceiver extends BroadcastReceiver {
 
     public  static final String OLVIDE_CONTRASENIA = "com.dam.bancoMovil.EVENTO_01_MSG";
 

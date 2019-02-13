@@ -6,24 +6,24 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textViewMenuCuentaTipoTransferencia"
+        android:id="@+id/textViewMonto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Tipo de transferencia:" />
+        android:text="@string/montoAdminServicios" />
 
     <TextView
-        android:id="@+id/textViewMenuCuentaFecha"
+        android:id="@+id/textViewRendimiento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Fecha:" />
+        android:text="@string/rendimiento" />
 
     <TextView
-        android:id="@+id/textViewMenuCuentaMonto"
+        android:id="@+id/textViewFechaFin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Monto: $ " />
+        android:text="@string/fecha_fin" />
 
 </LinearLayout>

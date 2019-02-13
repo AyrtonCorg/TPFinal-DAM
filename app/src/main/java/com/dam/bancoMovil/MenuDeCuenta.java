@@ -92,6 +92,7 @@ public class MenuDeCuenta extends AppCompatActivity {
             ult_mov.setText("Ultimos movimientos: No se realizo ninguna transferencia");
         }
 
+
         navView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override

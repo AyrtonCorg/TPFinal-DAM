@@ -42,4 +42,21 @@
 
     <string name="canal_estado_nombre">canal_estado_nombre</string>
     <string name="canal_estado_descr">canal_estado_descr</string>
+    <string name="dias_de_plazo">10 días de plazo</string>
+    <string name="intereses">Intereses:</string>
+    <string name="aceptar_terminos_y_condiciones">Aceptar términos y condiciones</string>
+    <string name="hacer_plazo_fijo">Hacer plazo fijo</string>
+    <string name="informacion_de_control">Información de control</string>
+    <string name="acreditar_en_cuenta">Acreditar en cuenta</string>
+    <string name="renovacion_automatica">Renovación automatica</string>
+    <string name="moneda">Moneda</string>
+    <string name="usd">USD</string>
+    <string name="ars">ARS</string>
+    <string name="dias">Dias:</string>
+    <string name="togglebutton">togglebutton</string>
+    <string name="montoAdminServicios">Monto:</string>
+    <string name="fecha_fin">Fecha fin:</string>
+    <string name="rendimiento">Rendimiento:</string>
+    <string name="renovacion_automatica_plazo_fijo">Renovacion automática</string>
+    <string name="monto_TextView">Monto</string>
 </resources>

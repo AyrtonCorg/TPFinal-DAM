@@ -35,9 +35,9 @@ public class IniciarSesion extends AppCompatActivity {
         this.olvideContrasenia = (Button) findViewById(R.id.olvidasteContrasenia);
         this.iniciarSesion = (Button) findViewById(R.id.btn_iniciarSesion);
 
-        br = new ContraseniaReceiver();
+        br = new MyReceiver();
         filtro = new IntentFilter();
-        filtro.addAction(ContraseniaReceiver.OLVIDE_CONTRASENIA);
+        filtro.addAction(MyReceiver.OLVIDE_CONTRASENIA);
         getApplication().getApplicationContext().registerReceiver(br,filtro);
         final Intent i = new Intent();
 
@@ -51,7 +51,7 @@ public class IniciarSesion extends AppCompatActivity {
                     if (existeUsuario(user)){
                         //Me comunico con el broadcast receiver
                         i.putExtra("username",user);
-                        i.setAction(ContraseniaReceiver.OLVIDE_CONTRASENIA);
+                        i.setAction(MyReceiver.OLVIDE_CONTRASENIA);
                         sendBroadcast(i);
                     }else{
                         //Muestro mensaje de error

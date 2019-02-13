@@ -5,7 +5,7 @@
     <item android:id="@+id/agregarSaldo" android:title="@string/agregar_saldo"></item>
     <item android:id="@+id/realizarTransferencia" android:title="@string/realizar_transferencia"></item>
     <item android:id="@+id/turnos" android:title="@string/turnos"></item>
-    <item android:id="@+id/ultimosMovimientos" android:title="Ultimos_movimientos"></item>
+    <item android:id="@+id/ultimosMovimientos" android:title="Ultimos movimientos"></item>
     <item android:id="@+id/administradorDeServicios" android:title="@string/administrador_de_servicios" />
     <item android:id="@+id/cerrarSesion" android:title="Cerrar sesión" />
 </menu>

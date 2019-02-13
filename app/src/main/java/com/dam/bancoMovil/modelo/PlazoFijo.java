@@ -32,8 +32,7 @@ public class PlazoFijo {
     @Embedded(prefix =  "use_")
     private Usuario usuario;
 
-    public PlazoFijo(long idPlazoFijo, float monto, TipoMoneda moneda, Date fechaFin, float rendimiento, boolean renovacionAutomatica, Usuario usuario) {
-        this.idPlazoFijo = idPlazoFijo;
+    public PlazoFijo(float monto, TipoMoneda moneda, Date fechaFin, float rendimiento, boolean renovacionAutomatica, Usuario usuario) {
         this.monto = monto;
         this.moneda = moneda;
         this.fechaFin = fechaFin;

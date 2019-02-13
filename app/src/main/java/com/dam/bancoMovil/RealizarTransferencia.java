@@ -160,9 +160,10 @@ public class RealizarTransferencia extends AppCompatActivity {
                 Runnable r = new Runnable() {
                     @Override
                     public void run() {
-                        //Creo y guardo la transferencia
+                        //Creo y guardo la transferencia en la cuenta origen y en la cuenta destino (cambia el tipo)
                         Transferencia transfer = new Transferencia(monto,cuentaO,usuarioD.getCuenta(),tipo,obser,hoy);
                         transfer.setId_transferencia(transferenciaDAO.insertOne(transfer));
+
                         /*Si agrego saldo a mi cuenta lo guardo una sola vez*/
                         //Agrego la transferencia a la cuenta -- No tengo que persistir datos asi que queda acá no más
                         cuentaO.getTransferencias().add(transfer);
@@ -170,6 +171,8 @@ public class RealizarTransferencia extends AppCompatActivity {
                         usuarioD.getCuenta().setSaldo(usuarioD.getCuenta().getSaldo() + monto);
                         //Si no agrego saldo actualizo cuentaD
                         if (!agregaSaldo){
+                            Transferencia trans = new Transferencia(monto,cuentaO,usuarioD.getCuenta(),TipoTransferencia.TRANSFERENCIA_RECIBIDA,obser,hoy);
+                            trans.setId_transferencia(transferenciaDAO.insertOne(trans));
                             //Descuento el saldo de la cuenta origen
                             cuentaO.setSaldo(cuentaO.getSaldo()-monto);
                             usuarioO.setCuenta(cuentaO);

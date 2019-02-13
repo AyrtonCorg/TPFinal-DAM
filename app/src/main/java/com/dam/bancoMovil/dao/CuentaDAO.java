@@ -7,6 +7,7 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.dam.bancoMovil.modelo.Cuenta;
+import com.dam.bancoMovil.modelo.TipoTransferencia;
 import com.dam.bancoMovil.modelo.Transferencia;
 
 import java.util.List;
@@ -22,6 +23,14 @@ public interface CuentaDAO {
     @Query("SELECT * FROM Transferencia WHERE Transferencia.cuentaOrigen_nroCuenta = :nroCuenta " +
                                             "OR Transferencia.cuentaDestino_nroCuenta = :nroCuenta")
     List<Transferencia> getTransferenciasDeCuenta(Long nroCuenta);
+
+    
+    @Query("SELECT * FROM Transferencia WHERE Transferencia.cuentaOrigen_nroCuenta = :nroCuenta " +
+            "AND Transferencia.tipoTransferencia = :tipo")
+    List<Transferencia> getTransferenciasRealizadas(Long nroCuenta, TipoTransferencia tipo);
+
+    @Query("SELECT * FROM Transferencia WHERE Transferencia.cuentaDestino_nroCuenta = :nroCuenta ")
+    List<Transferencia> getTransferenciasRecibidas(Long nroCuenta);
 
     @Insert
     void insertAll(List<Cuenta> cuenta);

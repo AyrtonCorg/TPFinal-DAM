@@ -8,12 +8,10 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dam.bancoMovil.R;
 import com.dam.bancoMovil.TransferenciaHolderDeMenuCuenta;
-import com.dam.bancoMovil.modelo.TipoTransferencia;
 import com.dam.bancoMovil.modelo.Transferencia;
 
 
@@ -42,7 +40,6 @@ public class AdaptadorFilaUltimosMovimientosDeCuenta extends ArrayAdapter<Transf
 
             convertView = inflater.inflate(R.layout.custom_adapters_adaptador_fila_ultimos_movimientos_de_cuenta,parent,false);
             viewHolder.fecha = (TextView) convertView.findViewById(R.id.textViewMenuCuentaFecha);
-            //viewHolder.imageView = (ImageView) convertView.findViewById(R.id.imageView2);
             viewHolder.monto = (TextView) convertView.findViewById(R.id.textViewMenuCuentaMonto);
             viewHolder.tipoTransferencia = (TextView) convertView.findViewById(R.id.textViewMenuCuentaTipoTransferencia);
 
@@ -61,13 +58,6 @@ public class AdaptadorFilaUltimosMovimientosDeCuenta extends ArrayAdapter<Transf
 
         viewHolder.fecha.setText("Fecha: " + dataModel.getFecha());
         viewHolder.monto.setText("Monto: $" + dataModel.getMonto());
-
-        /*viewHolder.imageView.setTag(position);
-        if(dataModel.getTipoTransferencia() == TipoTransferencia.TRANSFERENCIA_REALIZADAS){
-            viewHolder.imageView.setImageResource(R.drawable.pagos_realizados);
-        }else{
-            viewHolder.imageView.setImageResource(R.drawable.pagos_recibidos);
-        }*/
 
         switch (dataModel.getTipoTransferencia()){
             case TRANSFERENCIA_REALIZADAS:
