@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.TypeConverters;
 import android.arch.persistence.room.Update;
 
 import com.dam.bancoMovil.modelo.Cuenta;
@@ -24,13 +25,15 @@ public interface CuentaDAO {
                                             "OR Transferencia.cuentaDestino_nroCuenta = :nroCuenta")
     List<Transferencia> getTransferenciasDeCuenta(Long nroCuenta);
 
-    
+    @TypeConverters(TipoTransferenciaConverter.class)
     @Query("SELECT * FROM Transferencia WHERE Transferencia.cuentaOrigen_nroCuenta = :nroCuenta " +
             "AND Transferencia.tipoTransferencia = :tipo")
     List<Transferencia> getTransferenciasRealizadas(Long nroCuenta, TipoTransferencia tipo);
 
-    @Query("SELECT * FROM Transferencia WHERE Transferencia.cuentaDestino_nroCuenta = :nroCuenta ")
-    List<Transferencia> getTransferenciasRecibidas(Long nroCuenta);
+    @TypeConverters(TipoTransferenciaConverter.class)
+    @Query("SELECT * FROM Transferencia WHERE Transferencia.cuentaDestino_nroCuenta = :nroCuenta " +
+            "AND Transferencia.tipoTransferencia = :tipo")
+    List<Transferencia> getTransferenciasRecibidas(Long nroCuenta, TipoTransferencia tipo );
 
     @Insert
     void insertAll(List<Cuenta> cuenta);
