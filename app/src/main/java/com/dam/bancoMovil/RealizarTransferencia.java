@@ -251,8 +251,7 @@ public class RealizarTransferencia extends AppCompatActivity {
                     startActivity(j);
                     break;
                 case R.id.turnos:
-                    Intent k = new Intent(getApplicationContext() , SolicitarTurno.class);
-                    k.putExtra("idSucursal",-1);
+                    Intent k = new Intent(getApplicationContext() , AdministradorDeTurnos.class);
                     k.putExtra("username", usuarioO.getUsername());
                     startActivity(k);
                     break;

@@ -53,7 +53,7 @@ public class MyDatabase {
         turnoDAO = db.turnoDAO();
         usuarioDAO = db.usuarioDAO();
 
-       if(sucursalDAO.getAll() == null) {
+       /*if(sucursalDAO.getAll() == null || sucursales.isEmpty()) {
 
            Runnable r2 = new Runnable() {
                @Override
@@ -63,7 +63,13 @@ public class MyDatabase {
            };
            final Thread hiloInicializarTablas = new Thread(r2);
            hiloInicializarTablas.start();
-       }
+
+           try {
+               hiloInicializarTablas.join();
+           } catch (InterruptedException e) {
+               e.printStackTrace();
+           }
+       }*/
 
     }
 

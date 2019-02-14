@@ -1,16 +1,12 @@
 package com.dam.bancoMovil;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dam.bancoMovil.CustomAdapters.AdaptadorFilaUltimosMovimientosDeCuenta;
 import com.dam.bancoMovil.dao.MyDatabase;
@@ -111,8 +107,7 @@ public class MenuDeCuenta extends AppCompatActivity {
                                 startActivity(j);
                                 break;
                             case R.id.turnos:
-                                Intent k = new Intent(getApplicationContext() , SolicitarTurno.class);
-                                k.putExtra("idSucursal",-1);
+                                Intent k = new Intent(getApplicationContext() , AdministradorDeTurnos.class);
                                 k.putExtra("username",usuario.getUsername());
                                 startActivity(k);
                                 break;

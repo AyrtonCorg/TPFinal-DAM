@@ -60,4 +60,7 @@
     <string name="renovacion_automatica_plazo_fijo">Renovacion automática</string>
     <string name="monto_TextView">Monto</string>
     <string name="title_activity_buscar_sucursal">Map</string>
+    <string name="verturnos">VerTurnos</string>
+    <string name="solicitar_turnos">Solicitar Trno</string>
+    <string name="administrador_de_turnos">Administrador de turnos</string>
 </resources>

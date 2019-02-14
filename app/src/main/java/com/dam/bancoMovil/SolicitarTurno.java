@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,18 +18,13 @@ import android.widget.Toast;
 
 import com.dam.bancoMovil.dao.MyDatabase;
 import com.dam.bancoMovil.dao.SucursalDAO;
-import com.dam.bancoMovil.dao.TurnoDAO;
 import com.dam.bancoMovil.dao.UsuarioDAO;
-import com.dam.bancoMovil.dao.UsuarioDAO_Impl;
 import com.dam.bancoMovil.modelo.Sucursal;
 import com.dam.bancoMovil.modelo.TipoTramite;
-import com.dam.bancoMovil.modelo.TipoTransferencia;
 import com.dam.bancoMovil.modelo.Turno;
 import com.dam.bancoMovil.modelo.Usuario;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class SolicitarTurno extends AppCompatActivity {
@@ -54,7 +48,7 @@ public class SolicitarTurno extends AppCompatActivity {
     private String diaSeleccionado;
     private String mesSeleccionado;
     private String anioSeleccionado;
-    private boolean valido = false;
+    private boolean valido = true;
 
     private String[] dias30 = {"01","02","03","04","05","06","07","08","09","10","11","12","13","14",
             "15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"};
@@ -133,7 +127,6 @@ public class SolicitarTurno extends AppCompatActivity {
 
             String[] hora = {"09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30"};
 
-
             switch (Calendar.MONTH){
                 //1 = Febrero -> Enero = 0
                 case 2:
@@ -141,9 +134,6 @@ public class SolicitarTurno extends AppCompatActivity {
                                                     android.R.layout.simple_spinner_dropdown_item, dias28);
                     diaTurno.setAdapter(diasAdapter1);
                     diaTurno.setSelection(0);
-                    if(diaTurno.getItemAtPosition(0) != null){
-                        diaSeleccionado = (String) diaTurno.getItemAtPosition(Calendar.DAY_OF_MONTH);
-                    }
                     break;
                 case 1:
                 case 3:
@@ -156,18 +146,12 @@ public class SolicitarTurno extends AppCompatActivity {
                             android.R.layout.simple_spinner_dropdown_item, dias31);
                     diaTurno.setAdapter(diasAdapter2);
                     diaTurno.setSelection(0);
-                    if(diaTurno.getItemAtPosition(0) != null){
-                        diaSeleccionado = (String) diaTurno.getItemAtPosition(Calendar.DAY_OF_MONTH);
-                    }
                     break;
                 default:
                     ArrayAdapter<String>  diasAdapter3 = new ArrayAdapter<String>(getApplicationContext(),
                                 android.R.layout.simple_spinner_dropdown_item, dias30);
                     diaTurno.setAdapter(diasAdapter3);
                     diaTurno.setSelection(0);
-                    if(diaTurno.getItemAtPosition(0) != null){
-                        diaSeleccionado = (String) diaTurno.getItemAtPosition(Calendar.DAY_OF_MONTH);
-                    }
                     break;
             }
 
@@ -193,7 +177,9 @@ public class SolicitarTurno extends AppCompatActivity {
             }
         }
 
-        mesTurno.setOnItemClickListener(cargarDias);
+        diaTurno.setOnItemSelectedListener(guardarDia);
+        mesTurno.setOnItemSelectedListener(cargarDias);
+        anioTurno.setOnItemSelectedListener(guardarAnio);
 
         buscarSucursal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,19 +195,30 @@ public class SolicitarTurno extends AppCompatActivity {
         this.navigationView.setNavigationItemSelectedListener(menu);
     }
 
-    AdapterView.OnItemClickListener cargarDias =new AdapterView.OnItemClickListener() {
+    AdapterView.OnItemSelectedListener guardarDia =new AdapterView.OnItemSelectedListener(){
+
         @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            diaSeleccionado = diaTurno.getItemAtPosition(position).toString();
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
+
+    AdapterView.OnItemSelectedListener cargarDias =new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            mesSeleccionado = mesTurno.getItemAtPosition(position).toString();
+
             switch (position+1){
-                //1 = Febrero -> Enero = 0
                 case 2:
                     ArrayAdapter<String> diasAdapter1 = new ArrayAdapter<String>(getApplicationContext(),
                             android.R.layout.simple_spinner_dropdown_item, dias28);
                     diaTurno.setAdapter(diasAdapter1);
                     diaTurno.setSelection(0);
-                    if(diaTurno.getItemAtPosition(0) != null){
-                        diaSeleccionado = (String) diaTurno.getItemAtPosition(Calendar.DAY_OF_MONTH);
-                    }
                     break;
                 case 1:
                 case 3:
@@ -234,20 +231,33 @@ public class SolicitarTurno extends AppCompatActivity {
                             android.R.layout.simple_spinner_dropdown_item, dias31);
                     diaTurno.setAdapter(diasAdapter2);
                     diaTurno.setSelection(0);
-                    if(diaTurno.getItemAtPosition(0) != null){
-                        diaSeleccionado = (String) diaTurno.getItemAtPosition(Calendar.DAY_OF_MONTH);
-                    }
                     break;
                 default:
                     ArrayAdapter<String>  diasAdapter3 = new ArrayAdapter<String>(getApplicationContext(),
                             android.R.layout.simple_spinner_dropdown_item, dias30);
                     diaTurno.setAdapter(diasAdapter3);
                     diaTurno.setSelection(0);
-                    if(diaTurno.getItemAtPosition(0) != null){
-                        diaSeleccionado = (String) diaTurno.getItemAtPosition(Calendar.DAY_OF_MONTH);
-                    }
                     break;
             }
+        }
+
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
+
+    AdapterView.OnItemSelectedListener guardarAnio =new AdapterView.OnItemSelectedListener(){
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            anioSeleccionado = anioTurno.getItemAtPosition(position).toString();
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
         }
     };
 
@@ -270,9 +280,8 @@ public class SolicitarTurno extends AppCompatActivity {
                                 .concat(anioSeleccionado).concat("  ")
                                 .concat(horarioSeleccionado);
 
-            if(turnoValido(fechaTurno)){
+            if(turnoValido(fechaTurno, tipoTramite)){
                 //Creo el turno
-
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
@@ -285,6 +294,10 @@ public class SolicitarTurno extends AppCompatActivity {
                 };
                 Thread hiloGuardarTurno = new Thread(runnable);
                 hiloGuardarTurno.start();
+
+                Intent i = new Intent(getApplicationContext() , AdministradorDeTurnos.class);
+                i.putExtra("username", usuario.getUsername());
+                startActivity(i);
 
             }else{
                 Toast.makeText(getApplicationContext(),"El turno seleccionado no está disponible",Toast.LENGTH_SHORT).show();
@@ -304,21 +317,28 @@ public class SolicitarTurno extends AppCompatActivity {
         }
     };
 
-    private boolean turnoValido(final String fechaTurno){
+    private boolean turnoValido(final String fechaTurno, final TipoTramite tipoTramite){
         //Obtengo todos los turnos de la sucursal selecionada
         Runnable r = new Runnable() {
             @Override
             public void run() {
-                List<String> fechayHoraDeTurnos = MyDatabase.getInstance(getApplicationContext()).getTurnoDAO().getAllFechayHoraDeTurnosTurnos(sucursal.getId_sucursal());
-                if (fechayHoraDeTurnos.contains(fechaTurno)){
-                    valido = false;
-                }else{
-                    valido = true;
+                List<Turno> turnos = MyDatabase.getInstance(getApplicationContext()).getTurnoDAO().getAllTurnosDeSucursal(sucursal.getId_sucursal());
+
+                for (Turno t : turnos){
+                    if (t.getFechayHora().equals(fechaTurno) && t.getTipoTramite().equals(tipoTramite)){
+                        valido = false;
+                    }
                 }
             }
         };
         Thread hiloCargarTurnos = new Thread(r);
         hiloCargarTurnos.start();
+
+        try {
+            hiloCargarTurnos.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         return valido;
     }
@@ -341,8 +361,7 @@ public class SolicitarTurno extends AppCompatActivity {
                     startActivity(j);
                     break;
                 case R.id.turnos:
-                    Intent k = new Intent(getApplicationContext() , SolicitarTurno.class);
-                    k.putExtra("idSucursal",-1);
+                    Intent k = new Intent(getApplicationContext() , AdministradorDeTurnos.class);
                     k.putExtra("username", usuario.getUsername());
                     startActivity(k);
                     break;

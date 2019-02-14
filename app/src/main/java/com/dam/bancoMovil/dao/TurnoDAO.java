@@ -15,8 +15,11 @@ public interface TurnoDAO {
     @Query("SELECT * FROM Turno")
     List<Turno> getAll();
 
-    @Query("SELECT Turno.fechayHora FROM Turno WHERE Turno.suc_id_sucursal = :idSucursal")
-    List<String> getAllFechayHoraDeTurnosTurnos(int idSucursal);
+    @Query("SELECT * FROM Turno WHERE Turno.suc_id_sucursal = :idSucursal")
+    List<Turno> getAllTurnosDeSucursal(int idSucursal);
+
+    @Query("SELECT * FROM Turno WHERE Turno.usuario_username = :username")
+    List<Turno> getTurnosDeUsuario(String username);
 
     @Insert
     void insertAll(List<Turno> turno);

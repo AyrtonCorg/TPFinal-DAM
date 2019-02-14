@@ -1,16 +1,11 @@
 package com.dam.bancoMovil;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,13 +19,11 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.dam.bancoMovil.dao.MyDatabase;
-import com.dam.bancoMovil.dao.PlazoFijoDAO;
 import com.dam.bancoMovil.dao.UsuarioDAO;
 import com.dam.bancoMovil.modelo.PlazoFijo;
 import com.dam.bancoMovil.modelo.TipoMoneda;
 import com.dam.bancoMovil.modelo.Usuario;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -272,8 +265,7 @@ public class SolicitarPlazoFijo extends AppCompatActivity {
                     startActivity(j);
                     break;
                 case R.id.turnos:
-                    Intent k = new Intent(getApplicationContext() , SolicitarTurno.class);
-                    k.putExtra("idSucursal",-1);
+                    Intent k = new Intent(getApplicationContext() , AdministradorDeTurnos.class);
                     k.putExtra("username", usuario.getUsername());
                     startActivity(k);
                     break;

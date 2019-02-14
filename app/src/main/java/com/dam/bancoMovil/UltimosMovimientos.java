@@ -12,11 +12,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dam.bancoMovil.CustomAdapters.AdaptadorFilaActividadUltimosMovimientos;
-import com.dam.bancoMovil.CustomAdapters.AdaptadorFilaUltimosMovimientosDeCuenta;
 import com.dam.bancoMovil.dao.MyDatabase;
 import com.dam.bancoMovil.dao.UsuarioDAO;
 import com.dam.bancoMovil.modelo.TipoTransferencia;
@@ -25,8 +23,6 @@ import com.dam.bancoMovil.modelo.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.dam.bancoMovil.modelo.TipoTransferencia.TRANSFERENCIA_REALIZADAS;
 
 public class UltimosMovimientos extends AppCompatActivity {
     private static final int EVENTO_LISTA_CARGADA = 100;
@@ -171,8 +167,7 @@ public class UltimosMovimientos extends AppCompatActivity {
                     startActivity(j);
                     break;
                 case R.id.turnos:
-                    Intent k = new Intent(getApplicationContext() , SolicitarTurno.class);
-                    k.putExtra("idSucursal",-1);
+                    Intent k = new Intent(getApplicationContext() , AdministradorDeTurnos.class);
                     k.putExtra("username", usuario.getUsername());
                     startActivity(k);
                     break;

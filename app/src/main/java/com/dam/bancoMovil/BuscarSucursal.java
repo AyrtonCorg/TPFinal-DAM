@@ -24,6 +24,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 
@@ -90,20 +91,24 @@ public class BuscarSucursal extends FragmentActivity implements OnMapReadyCallba
             }
         }
 
-        miMapa.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+        miMapa.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
-            public void onMapClick(LatLng latLng) {
+            public boolean onMarkerClick(Marker marker) {
                 //Busco la sucursal seleccionada
                 for(Sucursal s:sucursales){
-                    if(s.getLatitud() == latLng.latitude && s.getLongitud() == latLng.longitude){
+                    if(Double.compare(s.getLatitud(),marker.getPosition().latitude) == 0 &&
+                            Double.compare(s.getLongitud(),marker.getPosition().longitude) == 0){
                         sucursal = s;
                     }
                 }
 
-                Intent i = new Intent(getApplicationContext(),SolicitarTurno.class);
-                i.putExtra("idSucursal", sucursal.getId_sucursal());
-                i.putExtra("username", usuario.getUsername());
-                startActivity(i);
+                if(sucursal != null){
+                    Intent i = new Intent(getApplicationContext(),SolicitarTurno.class);
+                    i.putExtra("idSucursal", sucursal.getId_sucursal());
+                    i.putExtra("username", usuario.getUsername());
+                    startActivity(i);
+                }
+                return false;
             }
         });
     }
@@ -125,7 +130,6 @@ public class BuscarSucursal extends FragmentActivity implements OnMapReadyCallba
         Runnable r = new Runnable() {
             @Override
             public void run() {
-                sucursales.clear();
                 sucursales = MyDatabase.getInstance(getApplicationContext()).getSucursalDAO().getAll();
                 Message completeMessage = handler.obtainMessage(EVENTO_UPDATE_LISTA);
                 completeMessage.sendToTarget();
