@@ -171,8 +171,9 @@ public class RealizarTransferencia extends AppCompatActivity {
                         usuarioD.getCuenta().setSaldo(usuarioD.getCuenta().getSaldo() + monto);
                         //Si no agrego saldo actualizo cuentaD
                         if (!agregaSaldo){
-                            Transferencia trans = new Transferencia(monto,cuentaO,usuarioD.getCuenta(),TipoTransferencia.TRANSFERENCIA_RECIBIDA,obser,hoy);
-                            trans.setId_transferencia(transferenciaDAO.insertOne(trans));
+                            //Esto no tendría que crearse acá se hace en BancoMessagingService
+                           /* Transferencia trans = new Transferencia(monto,cuentaO,usuarioD.getCuenta(),TipoTransferencia.TRANSFERENCIA_RECIBIDA,obser,hoy);
+                            trans.setId_transferencia(transferenciaDAO.insertOne(trans));*/
                             //Descuento el saldo de la cuenta origen
                             cuentaO.setSaldo(cuentaO.getSaldo()-monto);
                             usuarioO.setCuenta(cuentaO);

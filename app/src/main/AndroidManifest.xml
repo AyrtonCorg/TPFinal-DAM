@@ -49,6 +49,20 @@
             android:enabled="true"
             android:exported="true" />
 
+        <service
+            android:name="BancoMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".BancoFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
         <activity android:name=".AdministradorDeServicios" />
         <activity android:name=".UltimosMovimientos" />
         <activity android:name=".SolicitarTurno" />

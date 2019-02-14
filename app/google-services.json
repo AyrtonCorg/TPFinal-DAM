@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1007697881816",
+    "firebase_url": "https://tpfinal-dam.firebaseio.com",
+    "project_id": "tpfinal-dam",
+    "storage_bucket": "tpfinal-dam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007697881816:android:d970fd4b2ad0c565",
+        "android_client_info": {
+          "package_name": "com.dam.bancoMovil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1007697881816-govf4kkjijh71ap6ru07q854ot9aitd1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACW1hGmcZ4I0SR_ac76XNWZwD1AB6WD7I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
