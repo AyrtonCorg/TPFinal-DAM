@@ -151,11 +151,11 @@ public class AdministradorDeServicios extends AppCompatActivity {
                 //Armo un cuadro de dialogo para mostrar los detalles del plazo seleccionado
 
                 builder.setTitle("Datos del plazo fijo")
-                        .setMessage("ID del plazo fijo: "+ plazo.getIdPlazoFijo()+""
-                                        +"Monto: "+ plazo.getMonto()+""
-                                        +"Moneda: "+plazo.getMoneda()+""
-                                        +"Rendimiento: "+plazo.getRendimiento()+""
-                                        +"Fecha fin: "+fechaString);
+                        .setMessage("ID del plazo fijo: "+ plazo.getIdPlazoFijo()
+                                        +"  Monto: "+ plazo.getMonto()+""
+                                        +"  Moneda: "+plazo.getMoneda()+""
+                                        +"  Rendimiento: "+plazo.getRendimiento()+""
+                                        +"  Fecha fin: "+fechaString);
                 builder.create().show();
             }
         });
@@ -213,6 +213,7 @@ public class AdministradorDeServicios extends AppCompatActivity {
                     break;
                 case R.id.turnos:
                     Intent k = new Intent(getApplicationContext() , SolicitarTurno.class);
+                    k.putExtra("idSucursal",-1);
                     k.putExtra("username", usuario.getUsername());
                     startActivity(k);
                     break;

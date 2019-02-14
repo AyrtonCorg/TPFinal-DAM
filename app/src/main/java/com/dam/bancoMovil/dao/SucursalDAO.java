@@ -14,6 +14,9 @@ public interface SucursalDAO {
     @Query("SELECT * FROM Sucursal")
     List<Sucursal> getAll();
 
+    @Query("SELECT * FROM Sucursal WHERE Sucursal.id_sucursal = :nroSucursal")
+    Sucursal getSucursal(int nroSucursal);
+
     @Insert
     void insertAll(List<Sucursal> sucursal);
 

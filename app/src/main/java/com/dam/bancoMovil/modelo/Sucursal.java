@@ -24,8 +24,7 @@ public class Sucursal {
     @Ignore
     private List<Turno> turnos;
 
-    public Sucursal(int id_sucursal, String nombreSucursal, double latitud, double longitud) {
-        this.id_sucursal = id_sucursal;
+    public Sucursal(String nombreSucursal, double latitud, double longitud) {
         this.nombreSucursal = nombreSucursal;
         this.latitud = latitud;
         this.longitud = longitud;

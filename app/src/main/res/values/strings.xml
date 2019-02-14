@@ -59,4 +59,5 @@
     <string name="rendimiento">Rendimiento:</string>
     <string name="renovacion_automatica_plazo_fijo">Renovacion automática</string>
     <string name="monto_TextView">Monto</string>
+    <string name="title_activity_buscar_sucursal">Map</string>
 </resources>

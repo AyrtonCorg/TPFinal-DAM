@@ -112,6 +112,7 @@ public class MenuDeCuenta extends AppCompatActivity {
                                 break;
                             case R.id.turnos:
                                 Intent k = new Intent(getApplicationContext() , SolicitarTurno.class);
+                                k.putExtra("idSucursal",-1);
                                 k.putExtra("username",usuario.getUsername());
                                 startActivity(k);
                                 break;

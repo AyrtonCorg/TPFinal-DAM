@@ -4,12 +4,19 @@ import android.arch.persistence.room.Room;
 import android.content.Context;
 
 import com.dam.bancoMovil.modelo.PlazoFijo;
+import com.dam.bancoMovil.modelo.Sucursal;
 import com.dam.bancoMovil.modelo.Transferencia;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class MyDatabase {
 
     // variable de clase privada que almacena una instancia unica de esta entidad
     private static MyDatabase _INSTANCIA_UNICA=null;
+    private List<Sucursal> sucursales = new ArrayList<>();
+
 
     // metodo static publico que retorna la unica instancia de esta clase
     // si no existe, cosa que ocurre la primera vez que se invoca
@@ -45,6 +52,34 @@ public class MyDatabase {
         transferenciaDAO = db.transferenciaDAO();
         turnoDAO = db.turnoDAO();
         usuarioDAO = db.usuarioDAO();
+
+       if(sucursalDAO.getAll() == null) {
+
+           Runnable r2 = new Runnable() {
+               @Override
+               public void run() {
+                   inicializar();
+               }
+           };
+           final Thread hiloInicializarTablas = new Thread(r2);
+           hiloInicializarTablas.start();
+       }
+
+    }
+
+    //Inicializo los productos
+    private void inicializar(){
+        sucursales.add(new Sucursal("Banco Móvil 1",-31.622328, -60.688101));
+        sucursales.add(new Sucursal("Banco Móvil 2",-31.634584,-60.695451));
+
+        Runnable r1 = new Runnable() {
+            @Override
+            public void run() {
+                sucursalDAO.insertAll(sucursales);
+            }
+        };
+        Thread cargarSucursal = new Thread(r1);
+        cargarSucursal.start();
     }
 
     public void borrarTodo(){

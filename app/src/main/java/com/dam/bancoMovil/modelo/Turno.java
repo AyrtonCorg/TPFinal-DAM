@@ -25,10 +25,9 @@ public class Turno {
     @TypeConverters(TipoTramiteConverter.class)
     private TipoTramite tipoTramite;
     @ColumnInfo(name = "fechayHora")
-    @TypeConverters(FechaConverter.class)
-    private Date fechayHora;
+    private String fechayHora;
 
-    public Turno(Sucursal sucursal, Usuario usuario, TipoTramite tipoTramite, Date fechayHora) {
+    public Turno(Sucursal sucursal, Usuario usuario, TipoTramite tipoTramite, String fechayHora) {
         this.sucursal = sucursal;
         this.usuario = usuario;
         this.tipoTramite = tipoTramite;
@@ -67,11 +66,11 @@ public class Turno {
         this.tipoTramite = tipoTramite;
     }
 
-    public Date getFechayHora() {
+    public String getFechayHora() {
         return fechayHora;
     }
 
-    public void setFechayHora(Date fechayHora) {
+    public void setFechayHora(String fechayHora) {
         this.fechayHora = fechayHora;
     }
 }
